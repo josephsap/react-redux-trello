@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import sampleReducer from './sampleReducer';
+import boardReducer from './containers/BoardContainer/reducer';
+// import activeBoardReducer from './containers/SingleBoardContainer/reducer';
 
 const rootReducer = combineReducers({
-  sample: sampleReducer
+  boardReducer
 });
 
 export default rootReducer;

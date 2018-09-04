@@ -1,21 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route } from 'react-router';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
-import { createStore, applyMiddleware, compose } from 'redux';
-import createBrowserHistory from 'history/createBrowserHistory'
-
+import { createStore, applyMiddleware } from 'redux';
 
 import rootReducer from './rootReducer';
-import ReduxComponentConnect from './connectComponent';
-import sampleSaga from './saga';
+import rootSaga from './sagas';
 
 import './index.css';
-// import App from './App';
+import App from './containers/App';
+import SingleBoardContainer from './containers/SingleBoardContainer';
 import registerServiceWorker from './registerServiceWorker';
 
-const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   rootReducer,
@@ -23,13 +20,18 @@ const store = createStore(
   applyMiddleware(sagaMiddleware)
 );
 
-sagaMiddleware.run(sampleSaga);
+sagaMiddleware.run(rootSaga);
 
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
-      <Route path="/" component={ReduxComponentConnect}/>
+    <Router>
+      <div>
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route path="/boards/:id" component={SingleBoardContainer} />
+        </Switch>
+      </div>
     </Router>
   </Provider>,
   document.getElementById('root')

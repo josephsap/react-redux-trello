@@ -9,7 +9,7 @@ import { sampleCalledAction } from './actions';
 
 const ReduxComponent = ({ sampleCheck, sampleValue, reveal }) => (
   <div className="redux-component">
-    <span onClick={e => sampleCheck(true)}>Click to reveal the secret value</span>
+    <span onClick={e => sampleCheck(true)}>Click to reveal the secret value5656</span>
     {reveal && <p>{sampleValue}</p>}
   </div>
 );
