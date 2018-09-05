@@ -4,13 +4,11 @@ import { selectBoard } from '../BoardContainer/actions';
 
 export class SingleBoardContainer extends Component {
   componentDidMount() {
-    // selectBoard();
-
     this.props.selectBoard(this.props.match.params.id);
-    console.log(this.props, '00000000---0000');
   }
   
   render() {
+    console.log(this.props, 'props')
     return (
       <div>Single Board View cont</div>
     );

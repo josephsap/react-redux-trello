@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import { createStore, applyMiddleware } from 'redux';
@@ -28,6 +28,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <div>
+        <Link to="/">Home</Link>
         <Switch>
           <Route exact path="/" component={BoardContainer} />
           <Route path="/boards/:id" component={SingleBoardContainer} />
