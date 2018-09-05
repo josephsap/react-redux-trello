@@ -1,9 +1,9 @@
-// import { watchFetchBoard } from './containers/SingleBoardContainer/sagas';
+import { watchFetchBoard } from './containers/BoardContainer/sagas';
 import { fetchBoardsSaga } from './containers/BoardContainer/sagas';
 
 export default function* rootSaga() {
   yield [
-    // watchFetchBoard(),
+    watchFetchBoard(),
     fetchBoardsSaga()
   ];
 }

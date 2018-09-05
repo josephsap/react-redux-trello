@@ -18,9 +18,10 @@ function boardReducer(state = initialState, action) {
     case REQUEST_BOARDS_SUCCESS:
       return { ...state, boards: action.boards, loading: false };
     case SELECT_BOARD:
-      return { ...state, loading: true };
+      console.log('select board', action)
+      return { ...state, loading: true, activeBoard: action.activeBoard };
     case SELECT_BOARD_SUCCESS:
-      console.log(action.activeBoard)
+      console.log(action.activeBoard, '=====')
       return { ...state, activeBoard: action.activeBoard, loading: false };
     default:
       return state;
