@@ -1,32 +1,32 @@
 import React, { Component }from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { selectBoard } from '../BoardContainer/actions';
 
 export class SingleBoardContainer extends Component {
   componentDidMount() {
-    this.props.selectBoard(this.props.match.params.id);
+    selectBoard(this.props.match.params.id);
   }
   
   render() {
-    console.log(this.props, 'props')
     return (
       <div>Single Board View cont</div>
     );
   }
 };
 
+// mapStateToProps() is a utility which helps your component get updated state
 function mapStateToProps(state, ownProps) {
-  console.log("ii", state)
   return {
     activeBoard: state.boardReducer.boards[ownProps.match.params.id]
   };
 }
 
-// function mapDispatchToProps(dispatch) {
-//   console.log(this.props, '---')
-//   return {
-//     selectBoard: () => dispatch(selectBoard(this.props.activeBoard))
-//   };
-// }
-// export default SingleBoardContainer;
-export default connect(mapStateToProps, { selectBoard })(SingleBoardContainer);
+// mapDispatchToProps() is a utility which will help your component to fire an action event
+function mapDispatchToProps(dispatch) {
+  return {
+    selectBoard: bindActionCreators({ selectBoard }, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleBoardContainer);

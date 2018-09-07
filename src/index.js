@@ -9,7 +9,6 @@ import rootReducer from './rootReducer';
 import rootSaga from './sagas';
 
 import './index.css';
-import App from './containers/App';
 import SingleBoardContainer from './containers/SingleBoardContainer';
 import BoardContainer from './containers/BoardContainer';
 import registerServiceWorker from './registerServiceWorker';

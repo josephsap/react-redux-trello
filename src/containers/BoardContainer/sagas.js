@@ -1,7 +1,6 @@
 import { call, put, takeLatest, takeEvery } from 'redux-saga/effects';
 import { requestBoardsSuccess, selectBoardSuccess } from './actions';
-import { push } from 'react-router-redux';
-import { REQUEST_BOARDS, SELECT_BOARD, SELECT_BOARD_SUCCESS } from './constants';
+import { REQUEST_BOARDS, SELECT_BOARD } from './constants';
 
 
 /*
@@ -37,6 +36,7 @@ export function* fetchBoardsSaga() {
 
 */
 function fetchSelectedBoardFromServer(id) {
+  console.log(id, 'is00000000')
   return fetch(`https://5b744b1ea5837400141908d2.mockapi.io/api/boards/${id}`)
     .then(response => response.json());
 }
@@ -44,22 +44,15 @@ function fetchSelectedBoardFromServer(id) {
 // Watcher sagas
 // Listen for an action and run the appropriate Worker saga
 export function* watchFetchBoard() {
-  yield takeLatest(SELECT_BOARD, workFetchBoard);
+  yield takeEvery(SELECT_BOARD, workFetchBoard);
 }
 
 export function* workFetchBoard({ activeBoard }) {
   try {
+    console.log(activeBoard, 'hihi')
     const activeBoardItem = yield call(fetchSelectedBoardFromServer, activeBoard);
     yield put(selectBoardSuccess(activeBoardItem));
   } catch (error) {
     console.log('Request failed.', error);
   }
 }
-
-
-export default function* boardContainerRootSaga() {
-  yield [
-    fetchBoardsSaga(),
-    watchFetchBoard()
-  ];
-};

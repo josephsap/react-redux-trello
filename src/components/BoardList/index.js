@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-const BoardList = ({ boards, selectBoard }) => {
+const BoardList = ({ boards }) => {
   const boardItems = boards.map(board => (
     <li 
       key={board.id}
