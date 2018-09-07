@@ -1,4 +1,4 @@
-import { call, put, takeLatest, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import { selectBoardSuccess } from './actions';
 import { SELECT_BOARD } from './constants';
 
@@ -19,29 +19,12 @@ export function* watchFetchBoard() {
   yield takeEvery(SELECT_BOARD, workFetchBoard);
 }
 
-export function* workFetchBoard({ activeBoard }) {
-  console.log(activeBoard, 'active board')
+export function* workFetchBoard(activeBoard) {
+  console.log(activeBoard, '-----------')
   try {
-    const activeBoardItem = yield call(fetchSelectedBoardFromServer, activeBoard);
+    const activeBoardItem = yield call(fetchSelectedBoardFromServer, activeBoard.id);
     yield put(selectBoardSuccess(activeBoardItem));
   } catch (error) {
     console.log('Request failed.', error);
   }
 }
-
-// export function* workFetchPost({ id }) {
-//   try {
-//     // Try to call the API
-//     const uri = `${ROOT_URL}/posts/${id}${API_KEY}`;
-//     const response = yield call(axios.get, uri);
-
-//     // Dispatch the action to the reducers
-//     yield put({
-//       type: types.FETCH_POST_SUCCESS,
-//       payload: response.data
-//     });
-//   } catch (error) {
-//     // Act on the error
-//     console.log('Request failed! Could not fetch post.');
-//   }
-// }

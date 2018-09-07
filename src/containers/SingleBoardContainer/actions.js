@@ -3,16 +3,15 @@ import {
   SELECT_BOARD_SUCCESS 
 } from './constants';
 
-export function selectBoard(activeBoard) {
-    console.log('action active board', activeBoard)
+export function selectBoard(id) {
+  console.log(id, '====')
   return {
     type: SELECT_BOARD,
-    activeBoard
+    id
   };
 }
 
 export function selectBoardSuccess(activeBoard) {
-  console.log('action', activeBoard)
   return {
     type: SELECT_BOARD_SUCCESS,
     activeBoard

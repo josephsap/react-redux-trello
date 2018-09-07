@@ -6,22 +6,29 @@ import { selectBoard } from './actions';
 export class SingleBoardContainer extends Component {
   
   componentDidMount() {
-    console.log('render in did mount')
-    // this.props.selectBoard(this.props.match.params.id);
+    console.log('mount')
+    this.props.selectBoard(this.props.match.params.id);
   }
 
   componentWillUpdate(prevProps) {
-    console.log('update');
+    // console.log(this.props.match.params.id);
+    // console.log('-------')
+    // console.log(prevProps.match.params.id)
+    console.log(this.props.match.params.id, prevProps.match.params.id)
     if(this.props.match.params.id !== prevProps.match.params.id) {
       this.props.selectBoard(this.props.match.params.id);
     }
   }
   
   render() {
+    const { loading } = this.props;
     return (
       <div>
         Single Board View container
-        {this.props.activeBoard.name}
+        { loading && <div>loading...</div> }
+        { !loading &&
+          <p>{this.props.activeBoard.name}</p>
+        }
       </div>
     );
   }
@@ -29,8 +36,10 @@ export class SingleBoardContainer extends Component {
 
 // mapStateToProps() is a utility which helps your component get updated state
 function mapStateToProps(state, ownProps) {
+  console.log(state, '+++++', ownProps)
   return {
-    activeBoard: state.boardReducer.boards[ownProps.match.params.id]
+    activeBoard: state.activeBoardReducer.activeBoard,
+    loading: state.activeBoardReducer.loading
   };
 }
 

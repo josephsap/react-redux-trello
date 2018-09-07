@@ -11,7 +11,7 @@ import rootSaga from './sagas';
 import './index.css';
 import NavigationContainer from './containers/NavigationContainer';
 import SingleBoardContainer from './containers/SingleBoardContainer';
-import BoardContainer from './containers/BoardContainer';
+import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -30,7 +30,7 @@ ReactDOM.render(
       <div>
         <NavigationContainer />
         <Switch>
-          <Route exact path="/" component={BoardContainer} />
+          <Route exact path="/" component={App} />
           <Route exact path="/boards/:id" component={SingleBoardContainer} />
         </Switch>
       </div>
