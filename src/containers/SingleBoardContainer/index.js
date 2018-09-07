@@ -1,16 +1,28 @@
 import React, { Component }from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { selectBoard } from '../BoardContainer/actions';
+import { selectBoard } from './actions';
 
 export class SingleBoardContainer extends Component {
+  
   componentDidMount() {
-    selectBoard(this.props.match.params.id);
+    console.log('render in did mount')
+    // this.props.selectBoard(this.props.match.params.id);
+  }
+
+  componentWillUpdate(prevProps) {
+    console.log('update');
+    if(this.props.match.params.id !== prevProps.match.params.id) {
+      this.props.selectBoard(this.props.match.params.id);
+    }
   }
   
   render() {
     return (
-      <div>Single Board View cont</div>
+      <div>
+        Single Board View container
+        {this.props.activeBoard.name}
+      </div>
     );
   }
 };
@@ -25,7 +37,7 @@ function mapStateToProps(state, ownProps) {
 // mapDispatchToProps() is a utility which will help your component to fire an action event
 function mapDispatchToProps(dispatch) {
   return {
-    selectBoard: bindActionCreators({ selectBoard }, dispatch)
+    selectBoard: bindActionCreators(selectBoard, dispatch)
   };
 }
 

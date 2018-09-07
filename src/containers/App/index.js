@@ -1,19 +1,11 @@
-import React from 'react';
-import BoardContainer from '../BoardContainer';
+// import React from 'react';
+// import NavigationContainer from '../NavigationContainer';
 
 
-const App = props => {
+// const App = props => {
+//   return (
+//     <NavigationContainer />
+//   );
+// }
 
-  // static propTypes = {
-  //   children: React.PropTypes.node,
-  // };
-
-    return (
-      <div>
-        <h1 className="App-title">Welcome to React00000</h1>
-        <BoardContainer />
-      </div>
-    );
-}
-
-export default App;
+// export default App;

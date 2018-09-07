@@ -18,7 +18,7 @@ export class BoardContainer extends Component {
 
   render() {
     return (
-      <Navigation {...this.props} />
+      <div>board container, should render single board</div>
     );
   }
 }

@@ -1,13 +1,19 @@
 import React from 'react';
-import BoardList from '../BoardList';
+import { Link } from 'react-router-dom';
 
-// Navigation gets its props from BoardContainer.
-function Navigation({ boards, selectBoard }) {
+
+function Navigation({ boards }) {
+  const boardItems = boards.map(board => (
+    <li 
+      key={board.id}
+    >
+      <Link to={`/boards/${board.id}`}>
+        {board.name}
+      </Link>
+    </li>
+  ));
   return (
-    <BoardList
-      boards={boards} 
-      selectBoard={selectBoard}
-    />
+    <ul>{ boardItems }</ul>
   );
 }
 
