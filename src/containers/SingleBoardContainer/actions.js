@@ -4,7 +4,6 @@ import {
 } from './constants';
 
 export function selectBoard(id) {
-  console.log(id, '====')
   return {
     type: SELECT_BOARD,
     id

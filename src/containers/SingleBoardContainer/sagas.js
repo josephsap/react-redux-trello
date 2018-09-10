@@ -20,7 +20,6 @@ export function* watchFetchBoard() {
 }
 
 export function* workFetchBoard(activeBoard) {
-  console.log(activeBoard, '-----------')
   try {
     const activeBoardItem = yield call(fetchSelectedBoardFromServer, activeBoard.id);
     yield put(selectBoardSuccess(activeBoardItem));
