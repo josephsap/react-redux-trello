@@ -1,9 +1,8 @@
 import React, { Component }from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import mapValues from 'lodash/mapValues';
 import { selectBoard } from './actions';
-import CardList from '../../components/CardList';
+import CardListContainer from '../CardListContainer';
 
 export class SingleBoardContainer extends Component {
   
@@ -16,18 +15,6 @@ export class SingleBoardContainer extends Component {
       this.props.selectBoard(prevProps.match.params.id);
     }
   }
-
-  renderListItems() {
-    const { activeBoard } = this.props;
-    if(activeBoard) {
-      const mappedList = mapValues(activeBoard.data, list => list.name);
-      const mappedKeys = Object.keys(mappedList)
-      return mappedKeys.map((id, listItem) => {
-        console.log(listItem, id, 'hi')
-        return <CardList id={id} key={id} name={mappedList[id]} />
-      });
-    }
-  }
   
   render() {
     const { loading, activeBoard } = this.props;
@@ -38,7 +25,7 @@ export class SingleBoardContainer extends Component {
         { !loading &&
           <div>
             <p>{activeBoard.name}</p>
-            {this.renderListItems()}
+            <CardListContainer activeBoardData={activeBoard}/>
           </div>
         }
       </div>
