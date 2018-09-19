@@ -7,7 +7,10 @@ const CardListItem = (props) => {
   const cards = props.children.cards;
   const renderCardItems = cards.map((card) => {
     return (
-      <div key={card.cardId}>{card.name}</div>
+      <div key={card.cardId}>
+        <h3>{card.name}</h3>
+        <p>{card.description}</p>
+      </div>
     );
   });
 
