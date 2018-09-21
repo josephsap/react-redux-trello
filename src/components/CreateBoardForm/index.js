@@ -15,6 +15,12 @@ class CreateBoardForm extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
+		if(this.state.boardName === '') {
+			alert('enter a board name');
+			return false;
+		}
+		console.log(this.state, 'hihihi')
+		this.props.addBoard(this.state.boardName);
 	}
 
 	render() {
@@ -27,6 +33,7 @@ class CreateBoardForm extends Component {
 				  content={this.state.boardName}
 				  placeholder={'Create a Board'}
 				  title={'Create a Board'}
+				  inputType={'text'}
 				/>
 		    	<button type="submit" value="submit" className="add">Add it</button>
 		    </form>

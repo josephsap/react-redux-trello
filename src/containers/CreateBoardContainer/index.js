@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import CreateBoardForm from '../../components/CreateBoardForm';
+import { addBoard } from './actions'
 
 
 class CreateBoardContainer extends Component {
@@ -23,7 +24,9 @@ function mapStateToProps(state) {
 
 // mapDispatchToProps() is a utility which will help your component to fire an action event
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+  	addBoard: bindActionCreators(addBoard, dispatch)
+  };
 }
 
 
