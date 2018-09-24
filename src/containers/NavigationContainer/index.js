@@ -12,13 +12,12 @@ class NavigationContainer extends Component {
   }
 
   render() {
-    console.log(boardItems, '======++++')
     const boardItems = this.props.boards.map(board => (
       <li 
         key={board.id}
       >
         <Link to={`/boards/${board.id}`}>
-          {board.name}
+          {board.boardName}
         </Link>
       </li>
     ));
