@@ -7,7 +7,14 @@ import { requestCards } from './actions';
 export class CardListContainer extends Component {
 
   componentDidMount() {
-    console.log(this.props.activeBoardData.data[0].id, this.props.activeBoardData.data[1].id)
+
+    let listIds = [];
+
+    // multiple lists with multiple cards
+    this.props.activeBoardData.data.forEach(function(listItem) {
+      listIds.push(listItem.id);
+    });
+
     this.props.requestCards(this.props.activeBoardData.id, this.props.activeBoardData.data[1].id);
   }
 
