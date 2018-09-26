@@ -1,6 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { requestBoardsSuccess } from './actions';
-// import { push } from 'react-router-redux';
 import { REQUEST_BOARDS } from './constants';
 
 

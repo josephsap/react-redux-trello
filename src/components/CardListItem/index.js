@@ -2,22 +2,28 @@ import React from 'react';
 
 
 const CardListItem = (props) => {
-
-  const listName = props.children.name;
-  const cards = props.children.cards;
-  const renderCardItems = cards.map((card) => {
-    return (
-      <div key={card.cardId}>
-        <h3>{card.name}</h3>
-        <p>{card.description}</p>
-      </div>
-    );
+  const lists = props.children.data.map((listItem) => {
+    return <li key={listItem.id}>{listItem.listName}</li>
   });
 
+  const cards = props.cards.map((cardItem) => {
+    return <li 
+      key={cardItem.id}
+    >
+      {cardItem.title}
+      <br />
+      {cardItem.description}
+    </li>
+  })
   return (
     <div>
-      { listName }
-      { renderCardItems }
+      {props.children.boardName}
+      <ul>
+        {lists}
+      </ul>
+      <ul>
+        {cards}
+      </ul>
     </div>
   );
 };

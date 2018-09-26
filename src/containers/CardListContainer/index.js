@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import mapValues from 'lodash/mapValues';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import CardListItem from '../../components/CardListItem';
+import { requestCards } from './actions';
 
 export class CardListContainer extends Component {
+
+  componentDidMount() {
+    console.log(this.props.activeBoardData.data[0].id, this.props.activeBoardData.data[1].id)
+    this.props.requestCards(this.props.activeBoardData.id, this.props.activeBoardData.data[1].id);
+  }
 
   renderListItems() {
     const { activeBoardData } = this.props;
     if(activeBoardData) {
-      const mappedList = mapValues(activeBoardData.data, list => list.name);
-      const mappedKeys = Object.keys(mappedList)
-      return mappedKeys.map((listItem, index) => {
-        return <CardListItem id={index} key={index} name={mappedList[listItem]}>{activeBoardData.data[listItem]}</CardListItem>
-      });
+      return <CardListItem id={activeBoardData.id} key={activeBoardData.id} name={"the Name"} cards={this.props.cards}>{activeBoardData}</CardListItem>
     }
   }
 
@@ -23,10 +26,16 @@ export class CardListContainer extends Component {
     );
   }
 
-
-
-  
 }
 
+function mapStateToProps(state) {
+  return {
+    cards: state.requestCardsReducer.cards
+  };
+}
 
-export default CardListContainer;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ requestCards }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardListContainer);
