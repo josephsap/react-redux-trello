@@ -1,6 +1,6 @@
 import { REQUEST_CARDS, REQUEST_CARDS_SUCCESS } from './constants';
 
-export function requestCards(boardId, listId) {
+export function requestCards(boardId, listId = {}) {
 	return {
 		type: REQUEST_CARDS, 
 		boardId,

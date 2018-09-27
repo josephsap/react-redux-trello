@@ -9,8 +9,9 @@ export function fetchCardsFromServer(boardId, listId) {
 }
 
 function* fetchCards(cardAction) {
+	const idThings = cardAction.listId.listId;
 	try {
-		const cards = yield call(fetchCardsFromServer, cardAction.boardId, cardAction.listId);
+		const cards = yield idThings.map(idThing => call(fetchCardsFromServer,cardAction.boardId, idThing));
 		yield put(requestCardsSuccess(cards));
 	} catch(e) {
 		console.log(e);

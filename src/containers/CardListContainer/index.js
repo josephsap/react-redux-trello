@@ -8,14 +8,15 @@ export class CardListContainer extends Component {
 
   componentDidMount() {
 
-    let listIds = [];
+    let listIds = {
+      listId: []
+    };
 
     // multiple lists with multiple cards
     this.props.activeBoardData.data.forEach(function(listItem) {
-      listIds.push(listItem.id);
+      listIds.listId.push(listItem.id);
     });
-
-    this.props.requestCards(this.props.activeBoardData.id, this.props.activeBoardData.data[1].id);
+    this.props.requestCards(this.props.activeBoardData.id, listIds);
   }
 
   renderListItems() {

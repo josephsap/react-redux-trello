@@ -5,14 +5,15 @@ const CardListItem = (props) => {
   const lists = props.children.data.map((listItem) => {
     return <li key={listItem.id}>{listItem.listName}</li>
   });
-
-  const cards = props.cards.map((cardItem) => {
+  // console.log(Array.isArray(props.cards), '00')
+  const cards = props.cards.map((cardItem, index) => {
+    console.log(cardItem[index].id)
     return <li 
-      key={cardItem.id}
+      key={cardItem[index].id}
     >
-      {cardItem.title}
+      {cardItem[index].title}
       <br />
-      {cardItem.description}
+      {cardItem[index].description}
     </li>
   })
   return (
