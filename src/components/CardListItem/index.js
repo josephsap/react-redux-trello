@@ -3,30 +3,50 @@ import _ from 'lodash';
 
 
 const CardListItem = (props) => {
+  const parentListItems = [];
   const lists = props.children.data.map((listItem) => {
-    return <li key={listItem.id}>{listItem.listName}</li>
+    parentListItems.push(listItem);
+    return <li key={listItem.id} id={"list-" + listItem.id}>{listItem.listName}</li>
   });
 
   const loading = props.cards.loading;
   const cardsArr = props.cards.cards;
   const merged = [].concat.apply([], cardsArr);
-
-  const cards = merged.map((cardItem) => {
-   // console.log(cardItem, "-----")
-    return <li 
-      key={cardItem.id}
-    >
-      {cardItem.title}
-      <br />
-      {cardItem.description}
-    </li>
+  // console.log(parentListItems, '09')
+  const cards = merged.map((cardItem, index) => {
+  console.log(parentListItems[index], "-----")
+  // if(parentListItems[index].boardId) {
+  //   if(cardItem.cardListId === parentListItems[index].boardId) {
+      
+  //    return <div key={parentListItems[index].id}>{parentListItems[index].name}
+  //      <li 
+  //         key={cardItem.id}
+  //         id={cardItem.id}
+  //       >
+  //         {cardItem.title}
+  //       <br />
+  //       {cardItem.description}
+  //     </li>
+  //     </div>
+  //   }
+  //   // return <li 
+  //   //     key={cardItem.id}
+  //   //     id={cardItem.id}
+  //   //   >
+  //   //     {cardItem.title}
+  //   //   <br />
+  //   //   {cardItem.description}
+  //   //   {cardItem.cardListId}
+  //   // </li>
+  
+  //  }
   });
 
 
   return (
     <div>
       {props.children.boardName}
-      <h2>{lists}</h2>
+    
       { loading && <div>loading...</div> }
       { !loading &&
         <ul>
