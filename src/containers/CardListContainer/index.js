@@ -38,7 +38,7 @@ export class CardListContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    cards: state.requestCardsReducer.cards
+    cards: state.requestCardsReducer
   };
 }
 

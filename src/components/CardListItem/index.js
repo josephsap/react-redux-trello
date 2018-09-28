@@ -1,32 +1,41 @@
 import React from 'react';
+import _ from 'lodash';
 
 
 const CardListItem = (props) => {
   const lists = props.children.data.map((listItem) => {
     return <li key={listItem.id}>{listItem.listName}</li>
   });
-  // console.log(Array.isArray(props.cards), '00')
-  const cards = props.cards.map((cardItem, index) => {
-    console.log(cardItem[index].id)
+
+  const loading = props.cards.loading;
+  const cardsArr = props.cards.cards;
+  const merged = [].concat.apply([], cardsArr);
+
+  const cards = merged.map((cardItem) => {
+   // console.log(cardItem, "-----")
     return <li 
-      key={cardItem[index].id}
+      key={cardItem.id}
     >
-      {cardItem[index].title}
+      {cardItem.title}
       <br />
-      {cardItem[index].description}
+      {cardItem.description}
     </li>
-  })
+  });
+
+
   return (
     <div>
       {props.children.boardName}
-      <ul>
-        {lists}
-      </ul>
-      <ul>
-        {cards}
-      </ul>
+      <h2>{lists}</h2>
+      { loading && <div>loading...</div> }
+      { !loading &&
+        <ul>
+          {cards}
+        </ul>
+      }
     </div>
   );
+
 };
 
 export default CardListItem;
