@@ -5,6 +5,9 @@ import _ from 'lodash';
 const CardListItem = (props) => {
   const parentListItems = [];
   let rows = [];
+
+  // this endpoint gets cards in a cardslist
+  // https://5b744b1ea5837400141908d2.mockapi.io/api/boards/2/cardLists/2/cards
   const lists = props.children.data.map((listItem) => {
     parentListItems.push(listItem);
     return <li key={listItem.id} id={"list-" + listItem.id}>{listItem.listName}</li>
