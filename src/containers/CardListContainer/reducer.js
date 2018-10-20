@@ -1,7 +1,7 @@
 import { REQUEST_CARDS, REQUEST_CARDS_SUCCESS } from './constants';
 
 const initialState = {
-	cards: [],
+	listItems: [],
   loading: false
 };
 
@@ -10,7 +10,7 @@ function requestCardsReducer(state = initialState, action) {
     case REQUEST_CARDS:
       return { ...state, loading: true };
 		case REQUEST_CARDS_SUCCESS:
-			return { ...state, cards: action.cards, loading: false };
+			return { ...state, listItems: action.listItems, loading: false };
 		default:
 			return state;
 	}

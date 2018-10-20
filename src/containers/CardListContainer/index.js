@@ -12,8 +12,9 @@ export class CardListContainer extends Component {
       listId: []
     };
 
-    // multiple lists with multiple cards
-    this.props.activeBoardData.data.forEach(function(listItem) {
+
+    //multiple lists with multiple cards
+    this.props.activeBoardData.lists.forEach(function(listItem) {
       listIds.listId.push(listItem.id);
     });
     this.props.requestCards(this.props.activeBoardData.id, listIds);
@@ -21,8 +22,9 @@ export class CardListContainer extends Component {
 
   renderListItems() {
     const { activeBoardData } = this.props;
-    if(activeBoardData) {
-      return <CardListItem id={activeBoardData.id} key={activeBoardData.id} name={"the Name"} cards={this.props.cards}>{activeBoardData}</CardListItem>
+    // console.log(this.props.cards, 'rrr')
+    if(activeBoardData.listItems != []) {
+      return <CardListItem id={activeBoardData.id} key={activeBoardData.id} listItems={this.props.cards}name={"the Name"}></CardListItem>
     }
   }
 

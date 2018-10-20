@@ -3,19 +3,31 @@ import _ from 'lodash';
 
 
 const CardListItem = (props) => {
-  const parentListItems = [];
-  let rows = [];
+  // console.log(props, 'listssss');
+  const listsArr = props.listItems.listItems;
+  if(listsArr[0]) {
+    console.log(listsArr[0].cards[0], 'arr'); 
+  }
+
+
+
+
+  // the list is: props.children.lists
+ 
+
+  // const parentListItems = [];
+  // let rows = [];
 
   // this endpoint gets cards in a cardslist
   // https://5b744b1ea5837400141908d2.mockapi.io/api/boards/2/cardLists/2/cards
-  const lists = props.children.data.map((listItem) => {
-    parentListItems.push(listItem);
-    return <li key={listItem.id} id={"list-" + listItem.id}>{listItem.listName}</li>
-  });
+  // const lists = props.children.data.map((listItem) => {
+  //   parentListItems.push(listItem);
+  //   return <li key={listItem.id} id={"list-" + listItem.id}>{listItem.listName}</li>
+  // });
 
-  const loading = props.cards.loading;
-  const cardsArr = props.cards.cards;
-  const merged = [].concat.apply([], cardsArr);
+  // const loading = props.cards.loading;
+  // const cardsArr = props.cards.cards;
+  // const merged = [].concat.apply([], cardsArr);
   // console.log(parentListItems, '09')
 
 
@@ -35,8 +47,8 @@ const CardListItem = (props) => {
 
 
 
-  const cards = merged.map((cardItem, index) => {
-  console.log(parentListItems[index], "-----")
+  // const cards = merged.map((cardItem, index) => {
+  // console.log(parentListItems[index], "-----")
   // if(parentListItems[index].boardId) {
   //   if(cardItem.cardListId === parentListItems[index].boardId) {
       
@@ -62,19 +74,13 @@ const CardListItem = (props) => {
   //   // </li>
   
   //  }
-  });
+  // });
 
 
   return (
     <div>
-      {props.children.boardName}
-    
-      { loading && <div>loading...</div> }
-      { !loading &&
-        <ul>
-          {cards}
-        </ul>
-      }
+      
+      
     </div>
   );
 

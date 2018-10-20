@@ -8,9 +8,9 @@ export function requestCards(boardId, listId = {}) {
 	}
 }
 
-export function requestCardsSuccess(cards) {
+export function requestCardsSuccess(listItems) {
 	return {
 		type: REQUEST_CARDS_SUCCESS,
-		cards
+		listItems
 	};
 }
