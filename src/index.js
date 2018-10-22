@@ -27,13 +27,13 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <div>
+      <>
         <NavigationContainer />
         <Switch>
           <Route exact path="/" component={App} />
           <Route exact path="/boards/:id" component={SingleBoardContainer} />
         </Switch>
-      </div>
+      </>
     </Router>
   </Provider>,
   document.getElementById('root')

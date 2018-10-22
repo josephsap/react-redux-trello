@@ -19,12 +19,10 @@ class CreateBoardForm extends Component {
 			alert('enter a board name');
 			return false;
 		}
-		console.log(this.state, 'hihihi')
 		this.props.addBoard(this.state.boardName);
 	}
 
 	render() {
-		console.log(this.props, 'propssss')
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<TextInput 

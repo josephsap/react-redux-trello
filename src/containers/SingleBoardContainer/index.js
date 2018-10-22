@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectBoard } from './actions';
 import CardListContainer from '../CardListContainer';
+import CreateListContainer from '../CreateListContainer';
 
 export class SingleBoardContainer extends Component {
   
@@ -20,13 +21,12 @@ export class SingleBoardContainer extends Component {
     const { loading, activeBoard } = this.props;
     return (
       <div>
-        Single Board View container
         { loading && <div>loading...</div> }
         { !loading &&
-          <div>
-            <p>{activeBoard.name}</p>
+          <>
+            <CreateListContainer activeBoardId={activeBoard.id}/>
             <CardListContainer activeBoardData={activeBoard}/>
-          </div>
+          </>
         }
       </div>
     );

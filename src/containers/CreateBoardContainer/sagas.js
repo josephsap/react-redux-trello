@@ -23,9 +23,7 @@ function createBoard(boardName) {
 
 function* addBoard(action) {
 	try {
-		console.log(action)
 		const newBoard = yield call(createBoard, action.boardName);
-		console.log(newBoard, 'NEW BOARD HERE');
 		yield put(addBoardSuccess(newBoard));
 	} catch(e) {
 		console.log(e.message);

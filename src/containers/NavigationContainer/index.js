@@ -23,10 +23,10 @@ class NavigationContainer extends Component {
     ));
 
     return (
-      <div>
+      <nav>
         <Link to="/">Home</Link>
         <ul>{boardItems}</ul>
-      </div>
+      </nav>
     );
   }
 }

@@ -3,12 +3,14 @@ import { fetchBoardsSaga } from './containers/NavigationContainer/sagas';
 import { watchFetchBoard } from './containers/SingleBoardContainer/sagas';
 import { addBoardSaga } from './containers/CreateBoardContainer/sagas';
 import { fetchCardsSaga } from './containers/CardListContainer/sagas';
+import { addListSaga } from './containers/CreateListContainer/sagas';
 
 export default function* rootSaga() {
   yield all ([
     fetchBoardsSaga(),
     watchFetchBoard(),
     addBoardSaga(),
-    fetchCardsSaga()
+    fetchCardsSaga(),
+    addListSaga()
   ]);
 }
