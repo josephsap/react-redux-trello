@@ -1,6 +1,5 @@
 import { ADD_BOARD } from './constants';
-import { takeLatest } from 'redux-saga';
-import { call, put } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { addBoardSuccess, addBoardFailed } from './actions';
 
 
@@ -31,7 +30,7 @@ function* addBoard(action) {
 }
 
 export function* addBoardSaga() {
-	yield* takeLatest(ADD_BOARD, addBoard);
+	yield takeLatest(ADD_BOARD, addBoard);
 }
 
 // https://stackblitz.com/edit/react-redux-saga-demo?file=sagas%2FPostsSagas.js

@@ -8,6 +8,7 @@ import { addList } from './actions'
 class CreateListContainer extends Component {
 
 	render() {
+    console.log(this.props, '0000')
 		return (
 			<CreateListForm {...this.props} />
 		);
@@ -18,7 +19,7 @@ class CreateListContainer extends Component {
 // mapStateToProps() is a utility which helps your component get updated state
 function mapStateToProps(state) {
   return {
-    activeBoardId: state.activeBoardReducer.activeBoard.id
+    //activeBoardId: state.activeBoardReducer.activeBoard.id
   };
 }
 

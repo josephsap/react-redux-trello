@@ -5,7 +5,6 @@ import { addListSuccess, addListFailed } from './actions';
 
 // function to interact with the api (POST)
 function createList(listName, activeBoardId) {
-	console.log(listName, activeBoardId, '000---')
 	return fetch(`https://5b744b1ea5837400141908d2.mockapi.io/api/boards/${activeBoardId}/lists`, {
 		method: 'POST',
 		headers: {
@@ -23,7 +22,7 @@ function createList(listName, activeBoardId) {
 
 function* addList(action) {
 	try {
-		const newList = yield call(createList, action.listName);
+		const newList = yield call(createList, action.listName, action.activeBoardId);
 		yield put(addListSuccess(newList));
 	} catch(e) {
 		console.log(e.message);
@@ -31,7 +30,7 @@ function* addList(action) {
 }
 
 export function* addListSaga() {
-	yield* takeLatest(ADD_LIST, addList);
+	yield takeLatest(ADD_LIST, addList);
 }
 
 // https://stackblitz.com/edit/react-redux-saga-demo?file=sagas%2FPostsSagas.js

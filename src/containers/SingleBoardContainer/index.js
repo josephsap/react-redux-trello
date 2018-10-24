@@ -1,9 +1,10 @@
 import React, { Component }from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { selectBoard } from './actions';
+import { selectBoard, addList } from './actions';
 import CardListContainer from '../CardListContainer';
-import CreateListContainer from '../CreateListContainer';
+//import CreateListContainer from '../CreateListContainer';
+import CreateListForm from '../../components/CreateListForm';
 
 export class SingleBoardContainer extends Component {
   
@@ -24,7 +25,7 @@ export class SingleBoardContainer extends Component {
         { loading && <div>loading...</div> }
         { !loading &&
           <>
-            <CreateListContainer activeBoardId={activeBoard.id}/>
+            <CreateListForm activeBoardId={activeBoard.id} addList={addList}/>
             <CardListContainer activeBoardData={activeBoard}/>
           </>
         }
@@ -35,16 +36,21 @@ export class SingleBoardContainer extends Component {
 
 // mapStateToProps() is a utility which helps your component get updated state
 function mapStateToProps(state, ownProps) {
+  let aBoardLists = [];
+  if(state.activeBoardReducer.activeBoard !== undefined && state.activeBoardReducer.activeBoard !== null) {
+    aBoardLists = state.activeBoardReducer.activeBoard.lists
+  }
   return {
     activeBoard: state.activeBoardReducer.activeBoard,
-    loading: state.activeBoardReducer.loading
+    loading: state.activeBoardReducer.loading,
+    lists: aBoardLists
   };
 }
 
 // mapDispatchToProps() is a utility which will help your component to fire an action event
 function mapDispatchToProps(dispatch) {
   return {
-    selectBoard: bindActionCreators(selectBoard, dispatch)
+    ...bindActionCreators({ selectBoard, addList }, dispatch)
   };
 }
 

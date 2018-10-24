@@ -7,7 +7,6 @@ import {
 
 
 export function addList(listName, activeBoardId) {
-	console.log(listName, 'r000')
 	return {
 		type: ADD_LIST,
 		listName,
@@ -15,12 +14,10 @@ export function addList(listName, activeBoardId) {
 	};
 }
 
-export function addListSuccess(listName, activeBoardId) {
-	console.log(listName, 'rkk')
+export function addListSuccess(listName) {
 	return {
 		type: ADD_LIST_SUCCESS,
-		listName,
-		activeBoardId
+		listName
 	};
 }
 
