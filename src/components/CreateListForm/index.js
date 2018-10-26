@@ -23,7 +23,6 @@ class CreateListForm extends Component {
   }
 
   render() {
-    console.log(this.props, '-0')
     return (
       <form onSubmit={this.handleSubmit}>
         <label>Create a new list</label>

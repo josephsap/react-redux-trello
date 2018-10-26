@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import CardListItem from '../../components/CardListItem';
@@ -20,17 +20,18 @@ export class CardListContainer extends Component {
   }
 
   renderListItems() {
+    console.log(this.props, '888888');
     const { activeBoardData } = this.props;
-    if(activeBoardData.listItems !== []) {
-      return <CardListItem id={activeBoardData.id} key={activeBoardData.id} listItems={this.props.cards}name={"the Name"}></CardListItem>
-    }
+    //if(activeBoardData.listItems !== []) {
+      return <CardListItem id={activeBoardData.id} key={activeBoardData.id} listItems={this.props.cards}name={"the Name"}{...this.props}></CardListItem>
+    //}
   }
 
   render() {
     return (
-      <>
+      <Fragment>
         { this.renderListItems() }
-      </>
+      </Fragment>
     );
   }
 
