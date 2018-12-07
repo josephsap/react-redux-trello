@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 const CardListItem = (props) => {
   const loading = props.listItems.loading;
@@ -28,12 +28,12 @@ const CardListItem = (props) => {
 
 
   return (
-    <>
+    <Fragment>
       { loading && <div>loading...</div> }
       { !loading && 
-        <>{lists}</>
+        <Fragment>{lists}</Fragment>
       }
-    </>
+    </Fragment>
   );
 
 };

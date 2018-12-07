@@ -1,4 +1,4 @@
-import React, { Component }from 'react';
+import React, { Component, Fragment }from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectBoard } from './actions';
@@ -23,10 +23,10 @@ export class SingleBoardContainer extends Component {
       <div>
         { loading && <div>loading...</div> }
         { !loading &&
-          <>
+          <Fragment>
             <CreateListContainer activeBoardId={activeBoard.id}/>
             <CardListContainer activeBoardData={activeBoard}/>
-          </>
+          </Fragment>
         }
       </div>
     );

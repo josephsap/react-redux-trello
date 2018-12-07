@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import CardListItem from '../../components/CardListItem';
@@ -28,9 +28,9 @@ export class CardListContainer extends Component {
 
   render() {
     return (
-      <>
+      <Fragment>
         { this.renderListItems() }
-      </>
+      </Fragment>
     );
   }
 
