@@ -25,7 +25,7 @@ export class SingleBoardContainer extends Component {
         { loading && <div>loading...</div> }
         { !loading &&
           <Fragment>
-            <CreateListForm activeBoardId={activeBoard.id} addList={addList}/>
+            <CreateListContainer activeBoardId={activeBoard.id}/>
             <CardListContainer activeBoardData={activeBoard}/>
           </Fragment>
         }
