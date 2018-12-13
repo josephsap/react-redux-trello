@@ -2,7 +2,7 @@ import { all } from 'redux-saga/effects';
 import { fetchBoardsSaga } from './containers/NavigationContainer/sagas';
 import { watchFetchBoard, addListSaga } from './containers/SingleBoardContainer/sagas';
 import { addBoardSaga } from './containers/CreateBoardContainer/sagas';
-import { fetchCardsSaga } from './containers/CardListContainer/sagas';
+// import { fetchCardsSaga } from './containers/CardListContainer/sagas';
 
 
 export default function* rootSaga() {
@@ -10,7 +10,6 @@ export default function* rootSaga() {
     fetchBoardsSaga(),
     watchFetchBoard(),
     addBoardSaga(),
-    fetchCardsSaga(),
     addListSaga()
   ]);
 }

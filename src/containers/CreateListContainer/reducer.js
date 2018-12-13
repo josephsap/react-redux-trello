@@ -11,7 +11,7 @@ function createListReducer(state = initialState, action) {
     console.log(state, 'r999')
     return state;
   case ADD_LIST_SUCCESS:
-     console.log({ ...state, lists: [...state.lists, action.listName] })
+     console.log('========',{ ...state, lists: [...state.lists, action.listName] })
      return { ...state, lists: [...state.lists, action.listName] };
      // return { ...state, coinCollection: [...state.coinCollection,  action.selectedCoin] };
    default:

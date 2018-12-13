@@ -9,7 +9,7 @@ import { SELECT_BOARD, ADD_LIST } from './constants';
 
 */
 function fetchSelectedBoardFromServer(id) {
-  return fetch(`https://5b744b1ea5837400141908d2.mockapi.io/api/boards/${id}`)
+  return fetch(`https://5b744b1ea5837400141908d2.mockapi.io/api/boards/${id}/lists`)
     .then(response => response.json());
 }
 
@@ -37,7 +37,6 @@ export function* workFetchBoard(activeBoard) {
 
 // function to interact with the api (POST)
 function createList(listName, activeBoardId) {
-  console.log(listName, activeBoardId, 'createList Function in saga')
   return fetch(`https://5b744b1ea5837400141908d2.mockapi.io/api/boards/${activeBoardId}/lists`, {
     method: 'POST',
     headers: {

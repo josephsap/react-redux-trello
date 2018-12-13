@@ -2,7 +2,8 @@ import React, { Component }from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectBoard } from './actions';
-import CardListContainer from '../CardListContainer';
+// import CardListContainer from '../CardListContainer';
+import CardListItem from '../../components/CardListItem';
 import CreateListContainer from '../CreateListContainer';
 
 export class SingleBoardContainer extends Component {
@@ -11,9 +12,17 @@ export class SingleBoardContainer extends Component {
     this.props.selectBoard(this.props.match.params.id);
   }
 
-  componentWillUpdate(prevProps) {
-    if(this.props.match.params.id !== prevProps.match.params.id) {
-      this.props.selectBoard(prevProps.match.params.id);
+  // componentWillUpdate(prevProps) {
+  //   if(this.props.match.params.id !== prevProps.match.params.id) {
+  //     this.props.selectBoard(prevProps.match.params.id);
+  //   }
+  // }
+
+  renderListItems() {
+    console.log(this.props, '888888');
+    const { activeBoard } = this.props;
+    if(activeBoard) {
+      return <CardListItem id={activeBoard.id} key={activeBoard.id} name={"the Name"}{...this.props}></CardListItem>
     }
   }
   
@@ -24,8 +33,8 @@ export class SingleBoardContainer extends Component {
         { loading && <div>loading...</div> }
         { !loading &&
           <div>
-            <CreateListContainer activeBoardId={activeBoard.id}/>
-            <CardListContainer activeBoardData={activeBoard}/>
+            <CreateListContainer activeBoard={activeBoard}/>
+            { this.renderListItems() }
           </div>
         }
       </div>
