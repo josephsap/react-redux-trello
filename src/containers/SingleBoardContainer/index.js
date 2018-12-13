@@ -12,11 +12,11 @@ export class SingleBoardContainer extends Component {
     this.props.selectBoard(this.props.match.params.id);
   }
 
-  // componentWillUpdate(prevProps) {
-  //   if(this.props.match.params.id !== prevProps.match.params.id) {
-  //     this.props.selectBoard(prevProps.match.params.id);
-  //   }
-  // }
+  componentWillUpdate(prevProps) {
+    if(this.props.match.params.id !== prevProps.match.params.id) {
+      this.props.selectBoard(prevProps.match.params.id);
+    }
+  }
 
   renderListItems() {
     console.log(this.props, '888888');
