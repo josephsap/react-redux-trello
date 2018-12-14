@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import CreateListForm from '../../components/CreateListForm';
-import { addList } from './actions'
+import { addList } from '../SingleBoardContainer/actions'
 
 
 class CreateListContainer extends Component {
@@ -19,7 +19,8 @@ class CreateListContainer extends Component {
 // mapStateToProps() is a utility which helps your component get updated state
 function mapStateToProps(state) {
   return {
-    //activeBoardId: state.activeBoardReducer.activeBoard.id
+    activeBoard: state.activeBoardReducer.activeBoard,
+    activeBoardId: state.activeBoardReducer.activeBoardId,
   };
 }
 

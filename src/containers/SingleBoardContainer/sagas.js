@@ -20,6 +20,7 @@ export function* watchFetchBoard() {
 }
 
 export function* workFetchBoard(activeBoard) {
+  console.log(activeBoard, 'activeboard')
   try {
     const activeBoardItem = yield call(fetchSelectedBoardFromServer, activeBoard.id);
     yield put(selectBoardSuccess(activeBoardItem));
@@ -37,6 +38,7 @@ export function* workFetchBoard(activeBoard) {
 
 // function to interact with the api (POST)
 function createList(listName, activeBoardId) {
+  console.log(listName, activeBoardId, 'createList')
   return fetch(`https://5b744b1ea5837400141908d2.mockapi.io/api/boards/${activeBoardId}/lists`, {
     method: 'POST',
     headers: {
@@ -53,6 +55,7 @@ function createList(listName, activeBoardId) {
 
 
 function* addNewList(action) {
+  console.log(action, 'action')
   try {
     const newList = yield call(createList, action.listName, action.activeBoardId);
     yield put(addListSuccess(newList));

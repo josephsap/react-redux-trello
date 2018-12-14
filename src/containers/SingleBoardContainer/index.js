@@ -22,7 +22,7 @@ export class SingleBoardContainer extends Component {
     console.log(this.props, '888888');
     const { activeBoard } = this.props;
     if(activeBoard) {
-      return <CardListItem id={activeBoard.id} key={activeBoard.id} name={"the Name"}{...this.props}></CardListItem>
+      return <CardListItem id={activeBoard.id} key={activeBoard.id} name={"the Name"} activeBoard={activeBoard}></CardListItem>
     }
   }
   

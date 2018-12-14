@@ -2,37 +2,38 @@ import React from 'react';
 
 const CardListItem = (props) => {
   console.log(props, 'card list item')
-  // const loading = props.listItems.loading;
-  // const listsArr = props.listItems.listItems;
-  // let lists;
-  // if(listsArr !== []) {
-  //   lists = listsArr.map((list) => {
-  //     return (
-  //       <div key={list.id}>
-  //         <h3>{list.listName}</h3>
-  //         <ul>
-  //           {
-  //             list.cards.map((card) => {
-  //               return (
-  //                 <li key={card.id}>
-  //                   <p>{card.cardName}</p>
-  //                   <p>{card.cardDescription}</p>
-  //                 </li>
-  //               )
-  //             })
-  //           }
-  //         </ul>
-  //       </div>
-  //     );
-  //   });
-  // }
+  const loading = props.loading;
+  const listsArr = props.activeBoard;
+  let lists;
+  if(listsArr !== []) {
+    lists = listsArr.map((list) => {
+      return (
+        <div key={list.id}>
+          <h3>{list.listName}</h3>
+          <ul>
+            {
+              list.cards.map((card) => {
+                return (
+                  <li key={card.id}>
+                    <p>{card.cardName}</p>
+                    <p>{card.cardDescription}</p>
+                  </li>
+                )
+              })
+            }
+          </ul>
+        </div>
+      );
+    });
+  }
 
 
   return (
     <div>
-
-        <div>lists</div>
-     
+      { loading && <div>loading...</div> }
+      { !loading && 
+        <div>{lists}</div>
+      }
     </div>
   );
 
@@ -40,51 +41,3 @@ const CardListItem = (props) => {
 
 
 export default CardListItem;
-
-// import React, { Fragment } from 'react';
-
-// const CardListItem = (props) => {
-//   const loading = props.listItems.loading;
-//   const listsArr = props.activeBoardData.lists;
-//   console.log(props, '45676')
-//   let lists;
-//   if(listsArr !== []) {
-//     lists = listsArr.map((list) => {
-//       console.log(list, 'list')
-//       return (
-//         <div key={list.id}>
-//           <h3>{list.listName}</h3>
-
-//         </div>
-//       );
-//     });
-//  }
-
-
-//   return (
-//     <Fragment>
-//       { loading && <div>loading...</div> }
-//       { !loading && 
-//         <Fragment>{lists}</Fragment>
-//       }
-//     </Fragment>
-//   );
-
-// };
-// {/*
-//           <ul>
-//             {
-//               list.cards.map((card) => {
-//                 return (
-//                   <li key={card.id}>
-//                     <p>{card.cardName}</p>
-//                     <p>{card.cardDescription}</p>
-//                   </li>
-//                 )
-//               })
-//             }
-//           </ul>
-// */}
-
-
-// export default CardListItem;
