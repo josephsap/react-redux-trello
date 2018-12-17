@@ -22,7 +22,7 @@ export class SingleBoardContainer extends Component {
       <div>
         { loading && <div>loading...</div> }
         { !loading &&
-          <CreateListContainer />
+          <CreateListContainer {...this.props}/>
         }
       </div>
     );
