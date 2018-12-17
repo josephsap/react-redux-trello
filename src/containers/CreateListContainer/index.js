@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import CardListItem from '../../components/CardListItem';
 import CreateListForm from '../../components/CreateListForm';
 import { addList } from '../SingleBoardContainer/actions'
 
 
 class CreateListContainer extends Component {
 
+  renderListItems() {
+    const { activeBoard } = this.props;
+    if(activeBoard) {
+      return <CardListItem name={"the Name"} activeBoard={activeBoard}></CardListItem>
+    }
+  }
+
 	render() {
-    console.log(this.props, '0000')
+    console.log(this.props.activeBoard, 'aboard')
 		return (
-			<CreateListForm {...this.props} />
+      <div>
+        CL COntainer
+			 <CreateListForm {...this.props} />
+       { this.renderListItems() }
+      </div>
 		);
 	}
 
@@ -19,7 +31,7 @@ class CreateListContainer extends Component {
 // mapStateToProps() is a utility which helps your component get updated state
 function mapStateToProps(state) {
   return {
-    activeBoard: state.activeBoardReducer.activeBoard,
+    activeBoard: state.activeBoardReducer,
     activeBoardId: state.activeBoardReducer.activeBoardId,
   };
 }

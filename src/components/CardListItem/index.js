@@ -1,9 +1,8 @@
 import React from 'react';
 
 const CardListItem = (props) => {
-  console.log(props, 'card list item')
   const loading = props.loading;
-  const listsArr = props.activeBoard;
+  const listsArr = props.activeBoard.activeBoard;
   let lists;
   if(listsArr !== []) {
     lists = listsArr.map((list) => {
@@ -12,14 +11,15 @@ const CardListItem = (props) => {
           <h3>{list.listName}</h3>
           <ul>
             {
-              list.cards.map((card) => {
-                return (
-                  <li key={card.id}>
-                    <p>{card.cardName}</p>
-                    <p>{card.cardDescription}</p>
-                  </li>
-                )
-              })
+              list.cards !== undefined &&
+                list.cards.map((card) => {
+                  return (
+                    <li key={card.id}>
+                      <p>{card.cardName}</p>
+                      <p>{card.cardDescription}</p>
+                    </li>
+                  )
+                })
             }
           </ul>
         </div>

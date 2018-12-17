@@ -16,18 +16,12 @@ function activeBoardReducer(state = initialState, action) {
       return { ...state, loading: true, activeBoard: action.activeBoard, activeBoardId: action.id };
     case SELECT_BOARD_SUCCESS:
       return { ...state, activeBoard: action.activeBoard, loading: false };
-    // case ADD_LIST:
-    //   console.log('add list reducer', state)
-    //   return state;
     case ADD_LIST_SUCCESS:
       return {
         ...state,
-        activeBoard: {
-          ...state.activeBoard,
-          lists: [
-            ...state.lists, action.listName
-          ]
-        }
+        activeBoard: [
+          ...state.activeBoard, action.listName
+        ]
       };
     default:
       return state;
