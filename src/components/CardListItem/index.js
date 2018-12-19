@@ -2,7 +2,7 @@ import React from 'react';
 
 const CardListItem = (props) => {
   const loading = props.loading;
-  const listsArr = props.activeBoard.activeBoard;
+  const listsArr = props.activeBoard;
   let lists;
   if(listsArr !== []) {
     lists = listsArr.map((list) => {

@@ -29,7 +29,7 @@ class CreateListContainer extends Component {
 // mapStateToProps() is a utility which helps your component get updated state
 function mapStateToProps(state) {
   return {
-    activeBoard: state.activeBoardReducer,
+    activeBoard: state.activeBoardReducer.activeBoard,
     activeBoardId: state.activeBoardReducer.activeBoardId,
   };
 }
