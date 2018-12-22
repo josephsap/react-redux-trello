@@ -19,7 +19,6 @@ class CreateListForm extends Component {
       alert('Enter a list name');
       return false;
     }
-    console.log(this.props, 'propsssss in form')
     this.props.addList(this.state.listName, this.props.activeBoardId);
   }
 

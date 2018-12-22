@@ -1,8 +1,9 @@
 import { 
   SELECT_BOARD,
-  SELECT_BOARD_SUCCESS,
-  ADD_LIST_SUCCESS // move add list into create list container
+  SELECT_BOARD_SUCCESS
 } from './constants';
+
+import { ADD_LIST_SUCCESS } from '../CreateListContainer/constants';
 
 const initialState = {
   loading: true,
