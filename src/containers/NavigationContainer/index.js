@@ -12,6 +12,7 @@ class NavigationContainer extends Component {
   }
 
   render() {
+    console.log(this.props.boards, 'boards')
     const boardItems = this.props.boards.map(board => (
       <li 
         key={board.id}

@@ -3,6 +3,7 @@ import { fetchBoardsSaga } from './containers/NavigationContainer/sagas';
 import { watchFetchBoard } from './containers/SingleBoardContainer/sagas';
 import { addBoardSaga } from './containers/CreateBoardContainer/sagas';
 import { addListSaga } from './containers/CreateListContainer/sagas';
+import { addTaskSaga } from './containers/CreateTaskContainer/sagas';
 
 
 export default function* rootSaga() {
@@ -10,6 +11,7 @@ export default function* rootSaga() {
     fetchBoardsSaga(),
     watchFetchBoard(),
     addBoardSaga(),
-    addListSaga()
+    addListSaga(),
+    addTaskSaga()
   ]);
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import CreateTaskContainer from '../CreateTaskForm';
 
 const CardListItem = (props) => {
   const loading = props.loading;
@@ -22,6 +23,12 @@ const CardListItem = (props) => {
                 })
             }
           </ul>
+          <div>make this activate a modal.
+            <CreateTaskContainer 
+              {...props}
+              activeListId={list.id}
+            />
+          </div>
         </div>
       );
     });

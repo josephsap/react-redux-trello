@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
 import boardReducer from './containers/NavigationContainer/reducer';
 import activeBoardReducer from './containers/SingleBoardContainer/reducer';
-// import requestCardsReducer from './containers/CardListContainer/reducer';
+import createTaskReducer from './containers/CreateTaskContainer/reducer';
 
 const rootReducer = combineReducers({
   boardReducer,
-  activeBoardReducer
+  activeBoardReducer,
+  createTaskReducer
 });
 
 export default rootReducer;

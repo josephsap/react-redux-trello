@@ -22,7 +22,6 @@ export function selectBoardSuccess(activeBoard) {
 }
 
 export function addList(listName, activeBoardId) {
-  console.log('add list', listName, activeBoardId)
   return {
     type: ADD_LIST,
     listName,
@@ -31,7 +30,6 @@ export function addList(listName, activeBoardId) {
 }
 
 export function addListSuccess(listName, activeBoardId) {
-  console.log('add list success', listName, activeBoardId)
   return {
     type: ADD_LIST_SUCCESS,
     listName,
