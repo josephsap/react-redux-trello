@@ -9,9 +9,16 @@ import { addList } from '../SingleBoardContainer/actions'
 class CreateListContainer extends Component {
 
   renderListItems() {
-    const { activeBoard } = this.props;
+    const { activeBoard, activeBoardId } = this.props;
+    console.log(this.props, 'createlistcontainer')
     if(activeBoard) {
-      return <CardListItem name={"the Name"} activeBoard={activeBoard}></CardListItem>
+      return (
+        <CardListItem 
+          activeBoard={activeBoard}
+          activeBoardId={activeBoardId}
+          {...this.props}
+        />
+      );
     }
   }
 

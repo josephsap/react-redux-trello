@@ -4,43 +4,43 @@ import TextInput from '../TextInput';
 class CreateTaskForm extends Component {
 
   state = {
-    taskName: '',
+    cardName: '',
     taskDescription: ''
   }
 
   handleChange = (e) => {
     this.setState({
-      taskName: e.target.value
+      cardName: e.target.value
     });
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if(this.state.taskName === '') {
+    if(this.state.cardName === '') {
       alert('Enter a task name');
       return false;
     }
     //let activeListId = this.props.activeBoard.id;
-    //console.log(activeListId, 'list id')
+    //console.log(, 'list id')
     // this.props.activeListId
-    //this.props.addTask(this.state.taskName, this.state.taskDescription, this.props.activeBoardId);
+    console.log(this.props, 'props')
+    this.props.addTask(this.state.cardName, this.props.activeBoardId, this.props.activeListId);
   }
 
   render() {
-    console.log(this.props.activeListId, 'props')
     return (
       <form onSubmit={this.handleSubmit}>
         <label>Create a new Task</label>
         <TextInput 
           name={'Create Task Name Input'}
           controlFunction={this.handleChange}
-          content={this.state.taskName}
+          content={this.state.cardName}
           placeholder={'Create a Task'}
           title={'Create a Task'}
           inputType={'text'}
         />
-          <button type="submit" value="submit" className="add">Add a Task</button>
-        </form>
+        <button type="submit" value="submit" className="add">Add a Task</button>
+      </form>
     );
   }
 

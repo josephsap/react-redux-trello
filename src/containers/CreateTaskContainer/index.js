@@ -9,24 +9,28 @@ class CreateTaskContainer extends Component {
   render() {
     return (
       <Fragment>
-        <CreateTaskForm { ...this.props } />
+        <CreateTaskForm 
+          { ...this.props }
+          activeListId={this.props.activeListId}
+          activeBoardId={this.props.activeBoardId}
+        />
       </Fragment>
     );
   }
 
+}
 
-  function mapStateToProps(state) {
-    return {
-      
-    };
-  }
 
-  function mapDispatchToProps(dispatch) {
-    return {
-      addTask: bindActionCreators(addTask, dispatch)
-    };
-  }
+function mapStateToProps(state) {
+  return {
+    activeBoardId: state.createTaskReducer.activeBoardId
+  };
+}
 
+function mapDispatchToProps(dispatch) {
+  return {
+    addTask: bindActionCreators(addTask, dispatch)
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateTaskContainer);

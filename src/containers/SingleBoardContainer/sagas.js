@@ -1,5 +1,5 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
-import { selectBoardSuccess, addListSuccess, addListFailed } from './actions';
+import { selectBoardSuccess, sendActiveBoardToTaskReducer, addListSuccess, addListFailed } from './actions';
 import { SELECT_BOARD, ADD_LIST } from './constants';
 
 
@@ -23,6 +23,7 @@ export function* workFetchBoard(activeBoard) {
   try {
     const activeBoardItem = yield call(fetchSelectedBoardFromServer, activeBoard.id);
     yield put(selectBoardSuccess(activeBoardItem));
+    yield put(sendActiveBoardToTaskReducer(activeBoardItem[0].id))
   } catch (error) {
     console.log('Request failed.', error);
   }

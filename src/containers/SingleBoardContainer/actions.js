@@ -21,6 +21,13 @@ export function selectBoardSuccess(activeBoard) {
   };
 }
 
+export function sendActiveBoardToTaskReducer(activeBoardId) {
+  return {
+    type: 'SEND',
+    activeBoardId
+  };
+}
+
 export function addList(listName, activeBoardId) {
   return {
     type: ADD_LIST,

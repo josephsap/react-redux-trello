@@ -17,6 +17,8 @@ function activeBoardReducer(state = initialState, action) {
       return { ...state, loading: true, activeBoard: action.activeBoard, activeBoardId: action.id };
     case SELECT_BOARD_SUCCESS:
       return { ...state, activeBoard: action.activeBoard, loading: false };
+    case 'SEND':
+      return { ...state, activeBoardId: action.id };
     case ADD_LIST_SUCCESS:
       return {
         ...state,
