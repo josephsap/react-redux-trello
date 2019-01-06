@@ -7,17 +7,18 @@ import {
   ADD_LIST_CANCELLED
 } from './constants';
 
-export function selectBoard(id) {
+export function selectBoard(activeBoardId) {
   return {
     type: SELECT_BOARD,
-    id
+    activeBoardId
   };
 }
 
-export function selectBoardSuccess(activeBoard) {
+export function selectBoardSuccess(activeBoard, activeBoardId) {
   return {
     type: SELECT_BOARD_SUCCESS,
-    activeBoard
+    activeBoard,
+    activeBoardId
   };
 }
 

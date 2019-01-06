@@ -19,6 +19,7 @@ export class SingleBoardContainer extends Component {
   }
   
   render() {
+    console.log(this.props, '-0-0-0-')
     const { loading } = this.props;
     return (
       <div>
@@ -35,6 +36,7 @@ export class SingleBoardContainer extends Component {
 function mapStateToProps(state, ownProps) {
   return {
     activeBoard: state.activeBoardReducer,
+    activeBoardId: parseInt(state.createTaskReducer.activeBoardId),
     loading: state.activeBoardReducer.loading
   };
 }

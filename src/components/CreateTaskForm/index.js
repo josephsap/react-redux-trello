@@ -20,10 +20,6 @@ class CreateTaskForm extends Component {
       alert('Enter a task name');
       return false;
     }
-    //let activeListId = this.props.activeBoard.id;
-    //console.log(, 'list id')
-    // this.props.activeListId
-    console.log(this.props, 'props')
     this.props.addTask(this.state.cardName, this.props.activeBoardId, this.props.activeListId);
   }
 

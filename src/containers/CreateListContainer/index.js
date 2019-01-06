@@ -37,7 +37,7 @@ class CreateListContainer extends Component {
 function mapStateToProps(state) {
   return {
     activeBoard: state.activeBoardReducer.activeBoard,
-    activeBoardId: state.activeBoardReducer.activeBoardId,
+    activeBoardId: parseInt(state.createTaskReducer.activeBoardId)
   };
 }
 

@@ -14,12 +14,13 @@ const initialState = {
 function activeBoardReducer(state = initialState, action) {
   switch(action.type) {
     case SELECT_BOARD:
-      return { ...state, loading: true, activeBoard: action.activeBoard, activeBoardId: action.id };
+      return { ...state, loading: true, activeBoard: action.activeBoard, activeBoardId: action.activeBoardId };
     case SELECT_BOARD_SUCCESS:
-      return { ...state, activeBoard: action.activeBoard, loading: false };
+      return { ...state, loading: false, activeBoard: action.activeBoard, activeBoardId: parseInt(action.activeBoardId) };
     case 'SEND':
       return { ...state, activeBoardId: action.id };
     case ADD_LIST_SUCCESS:
+      console.log(state, 'al success', action)
       return {
         ...state,
         activeBoard: [

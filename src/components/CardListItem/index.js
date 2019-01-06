@@ -4,7 +4,6 @@ import CreateTaskContainer from '../../containers/CreateTaskContainer';
 const CardListItem = (props) => {
   const loading = props.loading;
   const listsArr = props.activeBoard;
-  console.log(props, 'h000000')
   let lists;
   if(listsArr !== []) {
     lists = listsArr.map((list) => {
@@ -29,6 +28,7 @@ const CardListItem = (props) => {
               {...props}
               activeListId={list.id}
               activeBoardId={props.activeBoardId}
+              activeBoard={listsArr}
             />
           </div>
         </div>

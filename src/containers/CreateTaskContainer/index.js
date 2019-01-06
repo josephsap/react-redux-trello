@@ -13,6 +13,7 @@ class CreateTaskContainer extends Component {
           { ...this.props }
           activeListId={this.props.activeListId}
           activeBoardId={this.props.activeBoardId}
+          activeBoard={this.props.activeBoard}
         />
       </Fragment>
     );
@@ -23,7 +24,8 @@ class CreateTaskContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    activeBoardId: state.createTaskReducer.activeBoardId
+    activeBoardId: parseInt(state.createTaskReducer.activeBoardId),
+    activeBoard: state.activeBoardReducer.activeBoard
   };
 }
 
