@@ -19,7 +19,6 @@ export class SingleBoardContainer extends Component {
   }
   
   render() {
-    console.log(this.props, '-0-0-0-')
     const { loading } = this.props;
     return (
       <div>

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import CreateTaskForm from '../../components/CreateTaskForm';
-import { addTask } from './actions';
+import { addTask, sendActiveBoardToActiveBoardReducer } from './actions';
 
 class CreateTaskContainer extends Component {
 
@@ -12,6 +12,7 @@ class CreateTaskContainer extends Component {
         <CreateTaskForm 
           { ...this.props }
           activeListId={this.props.activeListId}
+          activeList={this.props.activeList}
           activeBoardId={this.props.activeBoardId}
           activeBoard={this.props.activeBoard}
         />
@@ -31,7 +32,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addTask: bindActionCreators(addTask, dispatch)
+    addTask: bindActionCreators(addTask, dispatch),
+    sendActiveBoardToActiveBoardReducer: bindActionCreators(sendActiveBoardToActiveBoardReducer, dispatch)
   };
 }
 

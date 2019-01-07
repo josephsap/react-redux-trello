@@ -8,7 +8,8 @@ import { ADD_LIST_SUCCESS } from '../CreateListContainer/constants';
 const initialState = {
   loading: true,
   activeBoard: null,
-  activeBoardId: null
+  activeBoardId: null,
+  one: null
 };
 
 function activeBoardReducer(state = initialState, action) {
@@ -19,8 +20,10 @@ function activeBoardReducer(state = initialState, action) {
       return { ...state, loading: false, activeBoard: action.activeBoard, activeBoardId: parseInt(action.activeBoardId) };
     case 'SEND':
       return { ...state, activeBoardId: action.id };
+    case 'SEND_BOARD':
+      console.log(state, '999999999999999999999999999999', action)
+      return { ...state, activeBoard: action.activeBoard, one: 'hi' };
     case ADD_LIST_SUCCESS:
-      console.log(state, 'al success', action)
       return {
         ...state,
         activeBoard: [

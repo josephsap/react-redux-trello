@@ -1,6 +1,6 @@
 import { ADD_TASK } from './constants';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { addTaskSuccess } from './actions';
+import { addTaskSuccess, sendActiveBoardToActiveBoardReducer } from './actions';
 
 
 function createTask(cardName, activeBoardId, listId) {
@@ -20,9 +20,11 @@ function createTask(cardName, activeBoardId, listId) {
 
 
 function* addNewTask(action) {
+  console.log(action, 'action task')
   try {
     const newTask = yield call(createTask, action.cardName, action.activeBoardId, action.activeListId);
     yield put(addTaskSuccess(newTask));
+    yield put(sendActiveBoardToActiveBoardReducer(action.activeBoard))
   } catch(e) {
     console.log('error adding task', e.message);
   }

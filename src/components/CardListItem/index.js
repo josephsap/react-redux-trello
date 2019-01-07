@@ -27,6 +27,7 @@ const CardListItem = (props) => {
             <CreateTaskContainer 
               {...props}
               activeListId={list.id}
+              activeList={list}
               activeBoardId={props.activeBoardId}
               activeBoard={listsArr}
             />

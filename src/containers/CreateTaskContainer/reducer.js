@@ -5,6 +5,7 @@ const initialState = {
   activeBoardId: null,
   activeListId: null,
   activeBoard: null,
+  activeList: null,
   card: null
 };
 
@@ -13,11 +14,35 @@ function createTaskReducer(state = initialState, action) {
     case 'SEND':
       return { ...state, activeBoardId: action.activeBoardId };
     case ADD_TASK:
-      console.log(action, 'new card');
-      return { ...state, loading: true, card: action.cardName, activeListId: action.activeListId };
+      return { ...state, loading: true, card: action.cardName, activeListId: parseInt(action.activeListId), activeList: action.activeList, activeBoard: action.activeBoard };
     case ADD_TASK_SUCCESS:
-      console.log(state, 'task add success', action);
-      return { ...state, loading: true, activeListId: action.activeListId };
+      const aBoard = [...state.activeBoard];
+
+      const updatedActiveBoard = aBoard.map(item => {
+        if(parseInt(item.id) === state.activeListId) {
+          return  {
+            ...item, cards: [
+              ...item.cards, action.cardName
+            ]
+          };
+        }
+        return item;
+      });
+
+      return { 
+        ...state,
+        loading: true,
+        activeBoard: updatedActiveBoard,
+        activeList: {
+          ...state.activeList,
+          cards: [
+            ...state.activeList.cards, action.cardName
+          ]
+        } 
+      };
+    // case 'SEND_BOARD':
+    //   console.log(state, '999999999999999999999999999999')
+    //   return { ...state, one: 'hi' };
     default:
       return state;
   }

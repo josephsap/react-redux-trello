@@ -20,7 +20,8 @@ class CreateTaskForm extends Component {
       alert('Enter a task name');
       return false;
     }
-    this.props.addTask(this.state.cardName, this.props.activeBoardId, this.props.activeListId);
+    this.props.addTask(this.state.cardName, this.props.activeBoard, this.props.activeBoardId, this.props.activeListId, this.props.activeList);
+    this.props.sendActiveBoardToActiveBoardReducer(this.props.activeBoard);
   }
 
   render() {
