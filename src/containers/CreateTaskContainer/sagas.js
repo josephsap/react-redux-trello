@@ -20,11 +20,10 @@ function createTask(cardName, activeBoardId, listId) {
 
 
 function* addNewTask(action) {
-  console.log(action, 'action task')
   try {
     const newTask = yield call(createTask, action.cardName, action.activeBoardId, action.activeListId);
     yield put(addTaskSuccess(newTask));
-    yield put(sendActiveBoardToActiveBoardReducer(action.activeBoard))
+    yield put(sendActiveBoardToActiveBoardReducer(newTask))
   } catch(e) {
     console.log('error adding task', e.message);
   }

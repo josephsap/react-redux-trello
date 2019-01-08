@@ -9,6 +9,7 @@ const initialState = {
   loading: true,
   activeBoard: null,
   activeBoardId: null,
+  activeList: null,
   one: null
 };
 
@@ -21,8 +22,24 @@ function activeBoardReducer(state = initialState, action) {
     case 'SEND':
       return { ...state, activeBoardId: action.id };
     case 'SEND_BOARD':
-      console.log(state, '999999999999999999999999999999', action)
-      return { ...state, activeBoard: action.activeBoard, one: 'hi' };
+      const aBoard = [...state.activeBoard];
+
+      const updatedActiveBoard = aBoard.map(item => {
+        if(item.id === action.justAddedTask.listId) {
+          return  {
+            ...item, cards: [
+              ...item.cards, action.justAddedTask
+            ]
+          };
+        }
+        return item;
+      });
+
+      return { 
+        ...state,
+        loading: false,
+        activeBoard: updatedActiveBoard
+      };
     case ADD_LIST_SUCCESS:
       return {
         ...state,

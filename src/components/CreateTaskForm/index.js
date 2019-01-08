@@ -21,7 +21,9 @@ class CreateTaskForm extends Component {
       return false;
     }
     this.props.addTask(this.state.cardName, this.props.activeBoard, this.props.activeBoardId, this.props.activeListId, this.props.activeList);
-    this.props.sendActiveBoardToActiveBoardReducer(this.props.activeBoard);
+    this.setState({
+      cardName: ''
+    });
   }
 
   render() {

@@ -40,9 +40,6 @@ function createTaskReducer(state = initialState, action) {
           ]
         } 
       };
-    // case 'SEND_BOARD':
-    //   console.log(state, '999999999999999999999999999999')
-    //   return { ...state, one: 'hi' };
     default:
       return state;
   }
