@@ -1,28 +1,44 @@
 import React, { Component } from 'react';
 import TextInput from '../TextInput';
+import TextArea from '../TextInput/textarea';
 
 class CreateTaskForm extends Component {
 
   state = {
-    cardName: '',
-    taskDescription: ''
+    card: {
+      cardName: '',
+      cardDescription: ''
+    }
   }
 
   handleChange = (e) => {
     this.setState({
-      cardName: e.target.value
+      card: { 
+        cardName: e.target.value
+      }
+    });
+  }
+
+  handleDescriptionChange = (e) => {
+    this.setState({
+      card: {
+        cardDescription: e.target.value
+      }
     });
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if(this.state.cardName === '') {
+    if(this.state.card.name === '') {
       alert('Enter a task name');
       return false;
     }
-    this.props.addTask(this.state.cardName, this.props.activeBoard, this.props.activeBoardId, this.props.activeListId, this.props.activeList);
+    this.props.addTask(this.state.card, this.props.activeBoard, this.props.activeBoardId, this.props.activeListId, this.props.activeList);
     this.setState({
-      cardName: ''
+      card: {
+        cardName: '',
+        cardDescription: ''
+      }
     });
   }
 
@@ -33,10 +49,20 @@ class CreateTaskForm extends Component {
         <TextInput 
           name={'Create Task Name Input'}
           controlFunction={this.handleChange}
-          content={this.state.cardName}
+          content={this.state.card.cardName || ''}
           placeholder={'Create a Task'}
           title={'Create a Task'}
           inputType={'text'}
+        />
+        <TextArea
+          name={'Task Description'}
+          controlFunction={this.handleDescriptionChange}
+          content={this.state.card.cardDescription || ''}
+          placeholder={'Enter a description'}
+          title={'Enter a description'}
+          rows={4}
+          cols={40}
+          inputType={'textarea'}
         />
         <button type="submit" value="submit" className="add">Add a Task</button>
       </form>

@@ -9,7 +9,7 @@ import { REQUEST_BOARDS } from './constants';
 
 */
 export function fetchBoardsFromServer() {
-  return fetch(`https://5b744b1ea5837400141908d2.mockapi.io/api/boards`)
+  return fetch(`//5b744b1ea5837400141908d2.mockapi.io/api/boards`)
     .then(response => response.json());
 }
 

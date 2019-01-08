@@ -4,7 +4,8 @@ import { addTaskSuccess, sendActiveBoardToActiveBoardReducer } from './actions';
 
 
 function createTask(cardName, activeBoardId, listId) {
-  return fetch(`https://5b744b1ea5837400141908d2.mockapi.io/api/boards/${activeBoardId}/lists/${listId}/cards`, {
+  console.log(cardName, 'card name')
+  return fetch(`//5b744b1ea5837400141908d2.mockapi.io/api/boards/${activeBoardId}/lists/${listId}/cards`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',

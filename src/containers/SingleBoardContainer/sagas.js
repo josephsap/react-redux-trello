@@ -9,7 +9,7 @@ import { SELECT_BOARD } from './constants';
 
 */
 function fetchSelectedBoardFromServer(id) {
-  return fetch(`https://5b744b1ea5837400141908d2.mockapi.io/api/boards/${id}/lists`)
+  return fetch(`//5b744b1ea5837400141908d2.mockapi.io/api/boards/${id}/lists`)
     .then(response => response.json());
 }
 

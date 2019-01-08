@@ -4,7 +4,7 @@ import { addListSuccess, addListFailed } from './actions';
 
 
 function createList(listName, activeBoardId) {
-  return fetch(`https://5b744b1ea5837400141908d2.mockapi.io/api/boards/${activeBoardId}/lists`, {
+  return fetch(`//5b744b1ea5837400141908d2.mockapi.io/api/boards/${activeBoardId}/lists`, {
     method: 'POST',
     headers: {
       Accept: 'applicaton/json',
