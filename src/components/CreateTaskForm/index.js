@@ -12,19 +12,23 @@ class CreateTaskForm extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({
+    e.persist();
+    this.setState(prevState => ({
       card: { 
-        cardName: e.target.value
+        cardName: e.target.value,
+        cardDescription: prevState.card.cardDescription
       }
-    });
+    }));
   }
 
   handleDescriptionChange = (e) => {
-    this.setState({
+    e.persist();
+    this.setState(prevState => ({
       card: {
+        cardName: prevState.card.cardName,
         cardDescription: e.target.value
       }
-    });
+    }));
   }
 
   handleSubmit = (e) => {

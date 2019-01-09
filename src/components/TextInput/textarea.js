@@ -1,7 +1,6 @@
 import React from 'react';
 
 const TextArea = (props) => {
-  console.log(props.content, 'content')
   return (
     <div>
       <label>{props.label}</label>

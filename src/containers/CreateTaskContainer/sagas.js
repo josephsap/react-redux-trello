@@ -3,8 +3,8 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { addTaskSuccess, sendActiveBoardToActiveBoardReducer } from './actions';
 
 
-function createTask(cardName, activeBoardId, listId) {
-  console.log(cardName, 'card name')
+function createTask(card, activeBoardId, listId) {
+  const { cardName, cardDescription } = card;
   return fetch(`//5b744b1ea5837400141908d2.mockapi.io/api/boards/${activeBoardId}/lists/${listId}/cards`, {
     method: 'POST',
     headers: {
@@ -12,8 +12,8 @@ function createTask(cardName, activeBoardId, listId) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      cardName
-      // taskDescription
+      cardName,
+      cardDescription
     })
   })
   .then(response => response.json());
@@ -21,8 +21,9 @@ function createTask(cardName, activeBoardId, listId) {
 
 
 function* addNewTask(action) {
+  console.log(action, 'add new task')
   try {
-    const newTask = yield call(createTask, action.cardName, action.activeBoardId, action.activeListId);
+    const newTask = yield call(createTask, action.card, action.activeBoardId, action.activeListId);
     yield put(addTaskSuccess(newTask));
     yield put(sendActiveBoardToActiveBoardReducer(newTask))
   } catch(e) {

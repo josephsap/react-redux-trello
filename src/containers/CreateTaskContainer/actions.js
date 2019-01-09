@@ -1,9 +1,9 @@
 import { ADD_TASK, ADD_TASK_SUCCESS } from './constants';
 
-export function addTask(cardName, activeBoard, activeBoardId, activeListId, activeList) {
+export function addTask(card, activeBoard, activeBoardId, activeListId, activeList) {
   return {
     type: ADD_TASK,
-    cardName,
+    card,
     activeBoard,
     activeBoardId,
     activeListId,
@@ -12,10 +12,10 @@ export function addTask(cardName, activeBoard, activeBoardId, activeListId, acti
 };
 
 
-export function addTaskSuccess(cardName, activeListId, activeList) {
+export function addTaskSuccess(card, activeListId, activeList) {
   return {
     type: ADD_TASK_SUCCESS,
-    cardName,
+    card,
     activeListId,
     activeList
   }
