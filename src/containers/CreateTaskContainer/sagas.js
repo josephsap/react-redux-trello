@@ -21,7 +21,6 @@ function createTask(card, activeBoardId, listId) {
 
 
 function* addNewTask(action) {
-  console.log(action, 'add new task')
   try {
     const newTask = yield call(createTask, action.card, action.activeBoardId, action.activeListId);
     yield put(addTaskSuccess(newTask));

@@ -23,7 +23,7 @@ const CardListItem = (props) => {
                 })
             }
           </ul>
-          <div>make this activate a modal.
+          <div style={{position: 'relative'}}>
             <CreateTaskContainer 
               {...props}
               activeListId={list.id}
