@@ -24,7 +24,7 @@ class CreateListContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="listsWrapper">
        <CreateListForm {...this.props} />
        { this.renderListItems() }
       </div>

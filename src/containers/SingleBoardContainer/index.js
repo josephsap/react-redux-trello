@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectBoard, sendActiveBoardToTaskReducer } from './actions';
 import CreateListContainer from '../CreateListContainer';
+import './styles.css';
 
 export class SingleBoardContainer extends Component {
   
@@ -21,7 +22,7 @@ export class SingleBoardContainer extends Component {
   render() {
     const { loading } = this.props;
     return (
-      <div>
+      <div className="listsContainer">
         { loading && <div>loading...</div> }
         { !loading &&
           <CreateListContainer {...this.props}/>
