@@ -18,6 +18,12 @@ const CardListItem = (props) => {
                   list.cards.map((card) => {
                     return (
                       <li key={card.id}>
+                        <button
+                          id={card.id}
+                          onClick={() => props.controlFunction(card.id, list.id)}
+                        >
+                          delete card
+                        </button>
                         <p>{card.cardName}</p>
                         <p>{card.cardDescription}</p>
                       </li>

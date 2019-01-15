@@ -1,4 +1,4 @@
-import { ADD_TASK, ADD_TASK_SUCCESS } from './constants';
+import { ADD_TASK, ADD_TASK_SUCCESS, DELETE_CARD, DELETE_CARD_SUCCESS } from './constants';
 
 export function addTask(card, activeBoard, activeBoardId, activeListId, activeList) {
   return {
@@ -28,3 +28,23 @@ export function sendActiveBoardToActiveBoardReducer(justAddedTask) {
     justAddedTask
   };
 }
+
+export function deleteCard(activeBoardId, activeListId, cardId) {
+  return {
+    type: DELETE_CARD,
+    cardId,
+    activeBoardId,
+    activeListId
+  }
+};
+
+
+export function deleteCardSuccess(activeBoardId, activeListId, cardId) {
+  return {
+    type: DELETE_CARD_SUCCESS,
+    cardId,
+    activeBoardId,
+    activeListId
+  }
+};
+

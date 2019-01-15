@@ -11,12 +11,12 @@ class CreateTaskContainer extends Component {
     showModal: false
   }
 
-  handleModal = () => {
-    console.log(this.props.activeListId, 'props')
+  handleModal = (id) => {
     this.setState({
       showModal: !this.state.showModal
     });
   }
+
 
   render() {
     const modalToggle = this.state.showModal ? 'open' : '';
