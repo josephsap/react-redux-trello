@@ -30,6 +30,7 @@ export function sendActiveBoardToActiveBoardReducer(justAddedTask) {
 }
 
 export function deleteCard(activeBoardId, activeListId, cardId) {
+  console.log(activeBoardId, activeListId, cardId, 'del card')
   return {
     type: DELETE_CARD,
     cardId,
@@ -39,12 +40,11 @@ export function deleteCard(activeBoardId, activeListId, cardId) {
 };
 
 
-export function deleteCardSuccess(activeBoardId, activeListId, cardId) {
+export function deleteCardSuccess(card) {
+  console.log(card, 'del card success')
   return {
     type: DELETE_CARD_SUCCESS,
-    cardId,
-    activeBoardId,
-    activeListId
+    card
   }
 };
 

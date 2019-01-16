@@ -4,6 +4,7 @@ import {
 } from './constants';
 
 import { ADD_LIST_SUCCESS } from '../CreateListContainer/constants';
+import { DELETE_CARD_SUCCESS } from '../CreateTaskContainer/constants';
 
 const initialState = {
   loading: true,
@@ -47,6 +48,25 @@ function activeBoardReducer(state = initialState, action) {
           ...state.activeBoard, action.listName
         ]
       };
+
+    case DELETE_CARD_SUCCESS:
+      const activeBoard1 = [...state.activeBoard];
+
+      const updatedActiveBoard1 = activeBoard1.map(item => {
+        if(item.id === action.card.listId) {
+          const updatedCardsArr = item.cards.filter(cardItem => cardItem.id !== action.card.id);
+          return  {
+            ...item, cards: updatedCardsArr
+          };
+        }
+        return item;
+      });
+
+      return {
+        ...state,
+        activeBoard: updatedActiveBoard1
+      };
+      
     default:
       return state;
   }

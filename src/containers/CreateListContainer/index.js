@@ -24,7 +24,6 @@ class CreateListContainer extends Component {
   }
 
   handleCardDelete = (cardId, activeListId) => {
-    console.log(cardId, 'delete', this.props);
     this.props.deleteCard(this.props.activeBoardId, activeListId, cardId);
   }
 
