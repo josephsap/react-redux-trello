@@ -69,7 +69,16 @@ function activeBoardReducer(state = initialState, action) {
       };
 
     case MOVE_CARD_TO_LIST:
-      console.log(action, 'move card reducer')
+      console.log(action, 'move card reducer');
+      // return {
+      //   ...state,
+      //   activeBoard: [
+      //     ...state.activeBoard, 
+      //   ]
+      // }
+
+    case MOVE_CARD_TO_LIST_SUCCESS:
+      // returns the whole card object
       
     default:
       return state;
