@@ -19,3 +19,25 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+.cardItem {
+  border: 2px solid;
+  margin: 5px auto;
+  list-style: none;
+}
+
+.moveModal {
+  display: none;
+}
+
+.modalShowing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 250px;
+  width: 250px;
+  background-color: aqua;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  display: block;
+}

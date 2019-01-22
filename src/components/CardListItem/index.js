@@ -6,6 +6,7 @@ const CardListItem = (props) => {
   const loading = props.loading;
   const listsArr = props.activeBoard;
   let lists;
+  const modalToggle = props.modalOpen ? 'modalShowing' : '';
   if(listsArr !== []) {
     lists = listsArr.map((list) => {
       return (
@@ -17,15 +18,28 @@ const CardListItem = (props) => {
                 list.cards !== undefined &&
                   list.cards.map((card) => {
                     return (
-                      <li key={card.id}>
+                      <li key={card.id} className="cardItem">
                         <button
-                          id={card.id}
                           onClick={() => props.controlFunction(card.id, list.id)}
                         >
                           delete card
                         </button>
+                        <button
+                          onClick={() => props.moveFunction(card.id, list.id)}
+                        >
+                          move card
+                        </button>
                         <p>{card.cardName}</p>
                         <p>{card.cardDescription}</p>
+                        <div className={`moveModal ${modalToggle}`}>
+                          Move Modal Open {card.cardDescription}
+                          {props.moveCardSelect}
+                          <button
+                            onClick={() => props.moveFunction(card.id)}
+                          >
+                            close
+                          </button>
+                        </div>
                       </li>
                     )
                   })

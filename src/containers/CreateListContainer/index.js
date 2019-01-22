@@ -5,9 +5,14 @@ import CardListItem from '../../components/CardListItem';
 import CreateListForm from '../../components/CreateListForm';
 import { addList } from '../SingleBoardContainer/actions';
 import { deleteCard } from '../CreateTaskContainer/actions';
+import MoveCardSelect from '../../components/MoveCardSelect';
 
 
 class CreateListContainer extends Component {
+
+  state = {
+    modalOpen: false
+  }
 
   renderListItems() {
     const { activeBoard, activeBoardId } = this.props;
@@ -17,11 +22,21 @@ class CreateListContainer extends Component {
           activeBoard={activeBoard}
           activeBoardId={activeBoardId}
           controlFunction={this.handleCardDelete}
+          moveFunction={this.handleCardMove}
+          moveCardSelect={<MoveCardSelect {...this.props}/>}
           {...this.props}
+          {...this.state}
         />
       );
     }
   }
+
+  handleCardMove = (id) => {
+    console.log(id, '-----')
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    });
+  } 
 
   handleCardDelete = (cardId, activeListId) => {
     this.props.deleteCard(this.props.activeBoardId, activeListId, cardId);
