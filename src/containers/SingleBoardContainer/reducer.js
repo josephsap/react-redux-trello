@@ -5,6 +5,7 @@ import {
 
 import { ADD_LIST_SUCCESS } from '../CreateListContainer/constants';
 import { DELETE_CARD_SUCCESS } from '../CreateTaskContainer/constants';
+import { MOVE_CARD_TO_LIST, MOVE_CARD_TO_LIST_SUCCESS } from '../MoveCardSelectContainer/constants';
 
 const initialState = {
   loading: true,
@@ -66,6 +67,9 @@ function activeBoardReducer(state = initialState, action) {
         ...state,
         activeBoard: updatedActiveBoard1
       };
+
+    case MOVE_CARD_TO_LIST:
+      console.log(action, 'move card reducer')
       
     default:
       return state;
