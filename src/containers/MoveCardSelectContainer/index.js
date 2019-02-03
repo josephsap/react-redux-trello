@@ -15,7 +15,7 @@ class MoveCardSelect extends Component {
       selectedListValue: selectedListValue
     }, () => {
       let cardToMove = parseInt(this.props.cardToMove);
-      this.props.moveCard(this.props.activeBoardId, this.state.selectedListValue, cardToMove);
+      this.props.moveCard(this.props.activeBoardId, this.state.selectedListValue, cardToMove, this.props.listThatCardIsIn);
     });
   }
 

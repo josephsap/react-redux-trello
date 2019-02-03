@@ -12,7 +12,7 @@ const initialState = {
   activeBoard: null,
   activeBoardId: null,
   activeList: null,
-  one: null
+  listThatCardIsIn: null
 };
 
 function activeBoardReducer(state = initialState, action) {
@@ -69,16 +69,33 @@ function activeBoardReducer(state = initialState, action) {
       };
 
     case MOVE_CARD_TO_LIST:
-      console.log(action, 'move card reducer');
-      // return {
-      //   ...state,
-      //   activeBoard: [
-      //     ...state.activeBoard, 
-      //   ]
-      // }
+      return { ...state, listThatCardIsIn: parseInt(action.listThatCardIsIn) };
 
     case MOVE_CARD_TO_LIST_SUCCESS:
-      // returns the whole card object
+
+      const activeBoard2 = [...state.activeBoard];
+
+      // action.card.listId = new list card is going to
+      const updatedActiveBoard2 = activeBoard2.map(listItem => {
+
+        // add card to new list
+        if(parseInt(listItem.id) === parseInt(action.card.listId)) {
+          return { ...listItem, cards: [...listItem.cards, action.card] };
+        }
+
+        // remove card from old list
+        if(parseInt(listItem.id) === state.listThatCardIsIn) {
+          const updatedCardsArr = listItem.cards.filter(cardItem => cardItem.id !== action.card.id);
+          return { ...listItem, cards: updatedCardsArr };
+        }
+        return listItem;
+      });
+
+      return {
+        ...state,
+        activeBoard: updatedActiveBoard2
+      };
+
       
     default:
       return state;

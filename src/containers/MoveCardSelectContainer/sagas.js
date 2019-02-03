@@ -19,8 +19,8 @@ function moveCardToSelectedList(activeBoardId, listId, cardId) {
 export function* moveCardToNewList(action) {
 	console.log(action, 'action in saga')
 	try {
-		const updatedListWithNewCard = yield call(moveCardToSelectedList, action.activeBoardId, action.selectedListId, action.cardId);
-		yield put(moveCardSuccess(updatedListWithNewCard));
+		const cardThatWasMoved = yield call(moveCardToSelectedList, action.activeBoardId, action.selectedListId, action.cardId);
+		yield put(moveCardSuccess(cardThatWasMoved));
 	} catch(e) {
 		console.log('error moving card', e.message);
 	}

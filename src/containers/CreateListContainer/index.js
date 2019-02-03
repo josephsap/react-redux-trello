@@ -12,7 +12,8 @@ class CreateListContainer extends Component {
 
   state = {
     modalOpen: false,
-    cardToMove: null
+    cardToMove: null,
+    listThatCardIsIn: null
   }
 
   renderListItems() {
@@ -24,7 +25,7 @@ class CreateListContainer extends Component {
           activeBoardId={activeBoardId}
           controlFunction={this.handleCardDelete}
           moveFunction={this.handleCardMove}
-          moveCardSelect={<MoveCardSelect {...this.props} cardToMove={this.state.cardToMove}/>}
+          moveCardSelect={<MoveCardSelect {...this.props} cardToMove={this.state.cardToMove} listThatCardIsIn={this.state.listThatCardIsIn}/>}
           {...this.props}
           {...this.state}
         />
@@ -32,10 +33,11 @@ class CreateListContainer extends Component {
     }
   }
 
-  handleCardMove = (id) => {
+  handleCardMove = (id,listId) => {
     this.setState({
       modalOpen: !this.state.modalOpen,
-      cardToMove: id
+      cardToMove: id,
+      listThatCardIsIn: listId
     });
   } 
 
